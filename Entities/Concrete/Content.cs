@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities
+namespace Entities.Concrete
 {
     public class Content
     {
@@ -20,7 +20,7 @@ namespace Entities
         public int HeadingId { get; set; }
         public virtual Heading Heading { get; set; }
 
-        public int WriterId { get; set; }
+        public int? WriterId { get; set; }
         public virtual Writer Writer { get; set; }
     }
 }
