@@ -28,7 +28,7 @@ namespace Entities.Concrete
         [StringLength(20)]
         public string WriterPassword { get; set; }
 
-        public int HeadingId { get; set; }
+        
         public ICollection<Heading> Headings { get; set; }
         public ICollection<Content> Contents { get; set; }
     }
