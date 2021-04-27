@@ -13,10 +13,12 @@ namespace DataAccess.Concrete.Repositories
     {
         MvcContext context = new MvcContext();
         DbSet<T> _object;
+
         public GenericRepository()
         {
             _object = context.Set<T>();
         }
+
         public void Delete(T entity)
         {
             _object.Remove(entity);

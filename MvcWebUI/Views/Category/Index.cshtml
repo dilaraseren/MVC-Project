@@ -3,14 +3,19 @@
     Layout = null;
 }
 
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
 <h3>Örnek Tablo|Category Tablosu</h3>
 <br />
-<table>
+<table class="table table-hover">
     <tr>
         <th> Id</th>
         <th> Adı</th>
         <th> Açıklama</th>
         <th> Durum</th>
+        <th>Güncelle</th>
 
     </tr>
     <tr>
@@ -18,11 +23,31 @@
         <td>Eğitim</td>
         <td>Açıklaması yapıldı</td>
         <td> True</td>
+        <td button class="btn btn-success"> Güncelle</td>
     </tr>
     <tr>
         <td>2</td>
         <td>Spor</td>
         <td>Açıklaması yapıldı</td>
         <td> True</td>
+        <td button class="btn btn-success"> Güncelle</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Kitap</td>
+        <td>Açıklaması yapıldı</td>
+        <td> True</td>
+        <td button class="btn btn-success"> Güncelle</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Tiyatro</td>
+        <td>Açıklaması bekleniyor</td>
+        <td> True</td>
+        <td button class="btn btn-success"> Güncelle</td>
     </tr>
 </table>
+
+<button class="btn btn-info">Kategori seç</button>
+<button class="btn btn-warning">Kategori listele</button>
+<button class="btn btn-danger">Kategori açıklamaları</button>
