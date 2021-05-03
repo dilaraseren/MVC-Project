@@ -10,10 +10,10 @@ namespace MvcWebUI.Controllers
 {
     public class CategoryController : Controller
     {
-        
+
         // GET: Category
         CategoryManager cm = new CategoryManager();
-        
+
         public ActionResult Index()
         {
             return View();
@@ -25,6 +25,13 @@ namespace MvcWebUI.Controllers
             return View(categoryvalues);
         }
 
+        [HttpGet]
+        public ActionResult AddCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult AddCategory(Category p)
         {
             cm.CategoryAddBL(p);
