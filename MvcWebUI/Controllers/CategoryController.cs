@@ -1,5 +1,8 @@
 ﻿using Business.Concrete;
+using Business.ValidationRules.FluentValidation;
+using DataAccess.EntityFramework;
 using Entities.Concrete;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +15,7 @@ namespace MvcWebUI.Controllers
     {
 
         // GET: Category
-        CategoryManager cm = new CategoryManager();
+        CategoryManager cm = new CategoryManager(new EfCategoryDal());
 
         public ActionResult Index()
         {
@@ -21,7 +24,7 @@ namespace MvcWebUI.Controllers
 
         public ActionResult GetCategoryList()
         {
-            var categoryvalues = cm.GetAll();
+            var categoryvalues = cm.GetList();
             return View(categoryvalues);
         }
 
@@ -34,8 +37,23 @@ namespace MvcWebUI.Controllers
         [HttpPost]
         public ActionResult AddCategory(Category p)
         {
-            cm.CategoryAddBL(p);
-            return RedirectToAction("GetCategoryList");
+            //cm.CategoryAddBL(p);
+            CategoryValidator categoryValidator = new CategoryValidator();
+            ValidationResult results = categoryValidator.Validate(p);
+            if (results.IsValid)
+            {
+                cm.CategoryAdd(p);
+                return RedirectToAction("GetCategoryList");
+            }
+            else
+            {
+                foreach (var item in results.Errors )
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+
+            return View();
         }
     }
 }
