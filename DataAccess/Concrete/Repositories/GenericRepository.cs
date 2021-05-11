@@ -25,6 +25,11 @@ namespace DataAccess.Concrete.Repositories
             context.SaveChanges();
         }
 
+        public T Get(Expression<Func<T, bool>> filter)
+        {
+            return _object.SingleOrDefault(filter);
+        }
+
         public void Insert(T entity)
         {
             _object.Add(entity);
@@ -40,6 +45,7 @@ namespace DataAccess.Concrete.Repositories
         {
             return _object.Where(filter).ToList();
         }
+
 
         public void Update(T entity)
         {

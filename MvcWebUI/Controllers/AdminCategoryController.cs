@@ -46,5 +46,26 @@ namespace MvcWebUI.Controllers
            
 
         }
+        public ActionResult DeleteCategory(int id)
+        {
+            var categoryvalues = categoryManager.GetById(id);
+            categoryManager.CategoryDelete(categoryvalues);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult EditCategory(int id)
+        {
+            var categoryvalues = categoryManager.GetById(id);
+            return View(categoryvalues);
+        }
+
+
+        [HttpPost]
+        public ActionResult EditCategory(Category p )
+        {
+            categoryManager.CategoryUpdate(p);
+            return RedirectToAction("Index");
+        }
     }
 }
