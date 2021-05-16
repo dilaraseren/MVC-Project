@@ -12,16 +12,24 @@ namespace Entities.Concrete
 
         [Key]
         public int WriterId { get; set; }
+
         [StringLength(50)]
-        public string UserName { get; set; }
+        public string WriterName { get; set; }
+
         [StringLength(50)]
         public string WriterSurname { get; set; }
+
         [StringLength(100)]
         public string WriterImage { get; set; }
-        [StringLength(50)]
+
+        [StringLength(200)]
         public string WriterMail { get; set; }
-        [StringLength(20)]
+
+        [StringLength(200)]
         public string WriterPassword { get; set; }
+
+        [StringLength(100)]
+        public string About { get; set; }
 
         public ICollection<Heading> Headings { get; set; }
         public ICollection<Content> Contents { get; set; }
