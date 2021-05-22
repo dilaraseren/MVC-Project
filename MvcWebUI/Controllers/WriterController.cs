@@ -15,6 +15,7 @@ namespace MvcWebUI.Controllers
     {
         // GET: Writer
         WriterManager writerManager = new WriterManager(new EfWriterDal());
+        WriterValidator writerValidator = new WriterValidator();
         public ActionResult Index()
         {
             var values = writerManager.GetList();
@@ -30,7 +31,7 @@ namespace MvcWebUI.Controllers
 
         public ActionResult AddWriter(Writer writer)
         {
-            WriterValidator writerValidator = new WriterValidator();
+
             ValidationResult results = writerValidator.Validate(writer);
             if (results.IsValid)
             {
@@ -49,5 +50,32 @@ namespace MvcWebUI.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult EditWriter(int id)
+        {
+            var writervalue = writerManager.GetById(id);
+            return View(writervalue);
+
+        }
+
+    
+        [HttpPost]
+        public ActionResult EditWriter(Writer p)
+        {
+            ValidationResult results = writerValidator.Validate(p);
+            if (results.IsValid)
+            {
+                writerManager.WriterUpdate(p);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
+        }
     }
 }
