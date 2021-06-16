@@ -59,6 +59,7 @@
     <Compile Include="Abstract\IContactDal.cs" />
     <Compile Include="Abstract\IContentDal.cs" />
     <Compile Include="Abstract\IHeadingDal.cs" />
+    <Compile Include="Abstract\IMessageDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Abstract\IWriterDal.cs" />
     <Compile Include="Concrete\MvcContext.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="EntityFramework\EfContactDal.cs" />
     <Compile Include="EntityFramework\EfContentDal.cs" />
     <Compile Include="EntityFramework\EfHeadingDal.cs" />
+    <Compile Include="EntityFramework\EfMessageDal.cs" />
     <Compile Include="EntityFramework\EfWriterDal.cs" />
     <Compile Include="Migrations\202105152117464_mig-writer-edit.cs" />
     <Compile Include="Migrations\202105152117464_mig-writer-edit.designer.cs">
@@ -94,6 +96,14 @@
     <Compile Include="Migrations\202106161500223_mig_addaboutstatus.cs" />
     <Compile Include="Migrations\202106161500223_mig_addaboutstatus.designer.cs">
       <DependentUpon>202106161500223_mig_addaboutstatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106162137330_mig_addmessageclass.cs" />
+    <Compile Include="Migrations\202106162137330_mig_addmessageclass.designer.cs">
+      <DependentUpon>202106162137330_mig_addmessageclass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106162225300_mig_addmessage.cs" />
+    <Compile Include="Migrations\202106162225300_mig_addmessage.designer.cs">
+      <DependentUpon>202106162225300_mig_addmessage.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,6 +136,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106161500223_mig_addaboutstatus.resx">
       <DependentUpon>202106161500223_mig_addaboutstatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106162137330_mig_addmessageclass.resx">
+      <DependentUpon>202106162137330_mig_addmessageclass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106162225300_mig_addmessage.resx">
+      <DependentUpon>202106162225300_mig_addmessage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

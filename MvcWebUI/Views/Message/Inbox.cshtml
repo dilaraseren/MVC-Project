@@ -1,7 +1,7 @@
 ﻿@using Entities.Concrete
-@model List<Contact>
+@model List<Message>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Inbox";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -162,21 +162,21 @@
                                     @foreach (var item in Model)
                                     {
 
-                                    <tr>
-                                        <td>
-                                            <div class="icheck-primary">
-                                                <input type="checkbox" value="" id="check1">
-                                                <label for="check1"></label>
-                                            </div>
-                                        </td>
-                                        <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                                        <td class="mailbox-name"><a href="/Contact/GetContactDetails/@item.ContactId">@item.UserName</a></td>
-                                        <td class="mailbox-subject">
-                                            <b>@item.Subject</b> - @item.Message.Substring(0,30)...
-                                        </td>
-                                        <td class="mailbox-attachment"></td>
-                                        <td class="mailbox-date">@item.ContactDate</td>
-                                    </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="icheck-primary">
+                                                    <input type="checkbox" value="" id="check1">
+                                                    <label for="check1"></label>
+                                                </div>
+                                            </td>
+                                            <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
+                                            <td class="mailbox-name"><a href="/Contact/GetContactDetails/@item.MessageId">@item.SenderMail</a></td>
+                                            <td class="mailbox-subject">
+                                                <b>@item.Subject</b> - @item.MessageContent.Substring(0, 30)...
+                                            </td>
+                                            <td class="mailbox-attachment"></td>
+                                            <td class="mailbox-date">16.06.2021</td>
+                                        </tr>
                                     }
                                 </tbody>
                             </table>
@@ -219,3 +219,5 @@
 
 </body>
 </html>
+
+
