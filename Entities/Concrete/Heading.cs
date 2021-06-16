@@ -16,6 +16,7 @@ namespace Entities.Concrete
         public DateTime HeadingDate { get; set; }
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
+        public bool HeadingStatus { get; set; }
         public int WriterId { get; set; }
         public virtual Writer Writer { get; set; }
         public ICollection<Content> Contents { get; set; }

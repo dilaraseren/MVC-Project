@@ -20,5 +20,7 @@ namespace Entities.Concrete
         [StringLength(100)]
         public string AboutImage2 { get; set; }
 
+        public bool AboutStatus { get; set; }
+
     }
 }
