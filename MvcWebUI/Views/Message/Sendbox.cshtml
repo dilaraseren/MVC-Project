@@ -1,10 +1,9 @@
 ﻿@using Entities.Concrete
 @model List<Message>
 @{
-    ViewBag.Title = "Inbox";
+    ViewBag.Title = "Sendbox";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
 <!DOCTYPE html>
 <html>
 
@@ -18,19 +17,19 @@
                 <div class="col-sm-6">
                     <h1>Gelen Kutusu</h1>
                 </div>
-              
+
             </div>
         </div><!-- /.container-fluid -->
     </section>
     <!-- Main content -->
     <section class="content">
         <div class="row">
-             @Html.Action("MessageListMenu", "Contact")
+            @Html.Action("MessageListMenu", "Contact")
             <!-- /.col -->
             <div class="col-md-9">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">Gelen Kutusu</h3>
+                        <h3 class="card-title">Gönderilen Mesajlar</h3>
                         <div class="card-tools">
                             <div class="input-group input-group-sm">
                                 <input type="text" class="form-control" placeholder="Search Mail">
@@ -81,7 +80,7 @@
                                                 </div>
                                             </td>
                                             <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                                            <td class="mailbox-name"><a href="/Message/GetInboxMessageDetails/@item.MessageId">@item.SenderMail</a></td>
+                                            <td class="mailbox-name"><a href="/Message/GetSendboxMessageDetails/@item.MessageId">@item.ReceiverMail</a></td>
                                             <td class="mailbox-subject">
                                                 <b>@item.Subject</b> - @item.MessageContent.Substring(0, 30)...
                                             </td>
@@ -130,5 +129,3 @@
 
 </body>
 </html>
-
-

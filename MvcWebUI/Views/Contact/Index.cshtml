@@ -16,14 +16,9 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Gelen Kutusu</h1>
+                    <h3>Gelen Kutusu</h3>
                 </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Inbox</li>
-                    </ol>
-                </div>
+                
             </div>
         </div><!-- /.container-fluid -->
     </section>
@@ -31,7 +26,7 @@
     <section class="content">
         <div class="row">
             <div class="col-md-3">
-                <a href="compose.html" class="btn btn-primary btn-block mb-3">+ Yeni Mesaj</a>
+                <a href="/Message/NewMessage" class="btn btn-primary btn-block mb-3">+ Yeni Mesaj</a>
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Klasörler</h3>
@@ -56,7 +51,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/Message/Sendbox" class="nav-link">
                                     <i class="far fa-envelope"></i> Gönderilmiş Postalar
                                 </a>
                             </li>
@@ -119,7 +114,7 @@
             <div class="col-md-9">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">Gelen Kutusu</h3>
+                        <h3 class="card-title"> İletişim | Gelen Kutusu</h3>
                         <div class="card-tools">
                             <div class="input-group input-group-sm">
                                 <input type="text" class="form-control" placeholder="Search Mail">
@@ -175,7 +170,7 @@
                                             <b>@item.Subject</b> - @item.Message.Substring(0,30)...
                                         </td>
                                         <td class="mailbox-attachment"></td>
-                                        <td class="mailbox-date">@item.ContactDate</td>
+                                        <td class="mailbox-date">@(((DateTime)item.ContactDate).ToString("dd-MMM-yyyy"))</td>
                                     </tr>
                                     }
                                 </tbody>

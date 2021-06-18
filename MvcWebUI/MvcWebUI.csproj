@@ -137,6 +137,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
+    <Compile Include="Controllers\ErrorPageController.cs" />
     <Compile Include="Controllers\HeadingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
@@ -1981,6 +1982,10 @@
     <Content Include="AdminLTE-3.0.4\plugins\toastr\toastr.min.css" />
     <Content Include="AdminLTE-3.0.4\plugins\toastr\toastr.min.js" />
     <Content Include="AdminLTE-3.0.4\starter.html" />
+    <Content Include="colorlib-error-404-10\colorlib-error-404-10\css\style.css" />
+    <Content Include="colorlib-error-404-10\colorlib-error-404-10\img\bg.jpg" />
+    <Content Include="colorlib-error-404-10\colorlib-error-404-10\index.html" />
+    <Content Include="colorlib-error-404-10\colorlib-error-404-10\readme.txt" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -2332,10 +2337,15 @@
     <Content Include="Views\Contact\GetContactDetails.cshtml" />
     <Content Include="Views\Contact\MessageListMenu.cshtml" />
     <Content Include="Views\Message\Inbox.cshtml" />
+    <Content Include="Views\Message\Sendbox.cshtml" />
+    <Content Include="Views\Message\NewMessage.cshtml" />
+    <Content Include="Views\Message\GetInboxMessageDetails.cshtml" />
+    <Content Include="Views\Message\GetSendboxMessageDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\ErrorPage\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,9 +1,9 @@
-﻿@model Entities.Concrete.Contact
-
+﻿@model Entities.Concrete.Message
 @{
-    ViewBag.Title = "GetContactDetails";
+    ViewBag.Title = "GetInboxMessageDetails";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 
 <!DOCTYPE html>
 <html>
@@ -14,9 +14,9 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                   <h3>Mesaj Detay Sayfası</h3>
+                    <h3>Mesaj Detay Sayfası</h3>
                 </div>
-             
+
             </div>
         </div><!-- /.container-fluid -->
     </section>
@@ -24,7 +24,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                @Html.Partial("MessageListMenu", "Contact")
+                @Html.Action("MessageListMenu", "Contact")
                 <!-- /.col -->
                 <div class="col-md-9">
                     <div class="card card-primary card-outline">
@@ -41,8 +41,8 @@
                                 <h5>Konu: @Html.DisplayFor(x => x.Subject)</h5>
                                 <br />
                                 <h6>
-                                    Mail: @Html.DisplayFor(x => x.UserMail)
-                                    <span class="mailbox-read-time float-right">@Html.DisplayFor(x => x.ContactDate)</span>
+                                    Mail: @Html.DisplayFor(x => x.SenderMail)
+                                    <span class="mailbox-read-time float-right">@Html.DisplayFor(x => x.MessageDate)</span>
                                 </h6>
                             </div>
                             <!-- /.mailbox-read-info -->
@@ -65,7 +65,7 @@
                             </div>
                             <!-- /.mailbox-controls -->
                             <div class="mailbox-read-message">
-                                <p>@Html.DisplayFor(x => x.Message)</p>
+                                <p>@Html.DisplayFor(x => x.MessageContent)</p>
                             </div>
                             <!-- /.mailbox-read-message -->
                         </div>

@@ -62,6 +62,7 @@
     <Compile Include="ValidationRules\FluentValidation\CategoryValidator.cs" />
     <Compile Include="ValidationRules\FluentValidation\ContactValidator.cs" />
     <Compile Include="ValidationRules\FluentValidation\HeadingValidator.cs" />
+    <Compile Include="ValidationRules\FluentValidation\MessageValidator.cs" />
     <Compile Include="ValidationRules\FluentValidation\WriterValidator.cs" />
   </ItemGroup>
   <ItemGroup>
