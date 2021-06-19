@@ -13,38 +13,46 @@ namespace Business.Concrete
 {
     public class AuthManager : IAuthService
     {
-        private IAdminService _adminService;
+        IAdminService _adminService;
+        // IWriterService _writerService;
 
-        public bool Login(UserForLoginDto userForLoginDto)
+        public AuthManager(IAdminService adminService) //,IWriterService writerService
         {
-            var userToCheck = _adminService.GetByUsername(userForLoginDto.UserName);
-            if (userToCheck == null)
-            {
-                return false;
-            }
-
-            //if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.AdminPasswordHash, userToCheck.AdminPasswordSalt))
-            //{
-            //    return false;
-            //}
-
-            return true;
+            _adminService = adminService;
+            //_writerService = writerService;
         }
 
-        public void Register(UserForRegisterDto userForRegisterDto, string password)
+        public bool Login(LoginDto loginDto)
         {
-            byte[] passwordHash, passwordSalt;
-            HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+            using (var crypto = new System.Security.Cryptography.HMACSHA512())
+            {
+                var mailHash = crypto.ComputeHash(Encoding.UTF8.GetBytes(loginDto.AdminMail));
+                var admin = _adminService.GetList();
+                foreach (var item in admin)
+                {
+                    if (HashingHelper.VerifyPasswordHash(loginDto.AdminMail, loginDto.AdminPassword, item.AdminMail,
+                        item.AdminPasswordHash, item.AdminPasswordSalt))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
+
+        public void Register(string adminUserName, string adminMail, string password)
+        {
+            byte[] mailHash, passwordHash, passwordSalt;
+            HashingHelper.CreatePasswordHash(adminMail, password, out mailHash, out passwordHash, out passwordSalt);
             var admin = new Admin
             {
-                 AdminUserName = userForRegisterDto.UserName,
-               AdminPassword=userForRegisterDto.Password,
-                //AdminPasswordHash = passwordHash,
-                //AdminPasswordSalt = passwordSalt,
+                AdminUserName = adminUserName,
+                AdminMail = mailHash,
+                AdminPasswordHash = passwordHash,
+                AdminPasswordSalt = passwordSalt,
                 AdminRole = "A"
             };
-            _adminService.Add(admin);
-            return;
+            _adminService.AdminAdd(admin);
         }
     }
 }

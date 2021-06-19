@@ -63,8 +63,7 @@
     <Compile Include="Concrete\ImageFile.cs" />
     <Compile Include="Concrete\Message.cs" />
     <Compile Include="Concrete\MyAbout.cs" />
-    <Compile Include="DTO\UserForLoginDto.cs" />
-    <Compile Include="DTO\UserForRegisterDto.cs" />
+    <Compile Include="DTO\LoginDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Concrete\Writer.cs" />
   </ItemGroup>

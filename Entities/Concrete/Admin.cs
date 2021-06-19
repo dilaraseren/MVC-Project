@@ -11,8 +11,15 @@ namespace Entities.Concrete
     {
         [Key]
         public int AdminId { get; set; }
+
+        [StringLength(50)]
         public string AdminUserName { get; set; }
-        public string AdminPassword { get; set; }
+
+        public byte[] AdminMail { get; set; }
+
+        public byte[] AdminPasswordHash { get; set; }
+
+        public byte[] AdminPasswordSalt { get; set; }
 
         [StringLength(1)]
         public string AdminRole { get; set; }

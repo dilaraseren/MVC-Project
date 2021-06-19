@@ -14,7 +14,7 @@ namespace MvcWebUI.Controllers
     public class MessageController : Controller
     {
         // GET: Message
-       MessageManager mm = new MessageManager(new EfMessageDal());
+        MessageManager mm = new MessageManager(new EfMessageDal());
         MessageValidator messagevalidator = new MessageValidator();
         public ActionResult Inbox()
         {
@@ -45,24 +45,52 @@ namespace MvcWebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult NewMessage(Message p)
+        public ActionResult NewMessage(Message message, string button)
         {
-            ValidationResult results = messagevalidator.Validate(p);
-            if (results.IsValid)
+            ValidationResult validationResult = messagevalidator.Validate(message);
+            if (button == "add")
             {
-                p.MessageDate = DateTime.Parse(DateTime.Now.ToLongTimeString());
-                mm.MessageAdd(p);
-                return RedirectToAction("Sendbox");
-
-            }
-            else
-            {
-                foreach (var i in results.Errors)
+                if (validationResult.IsValid)
                 {
-                    ModelState.AddModelError(i.PropertyName, i.ErrorMessage);
-
+                    message.SenderMail = "admin@gmail.com";
+                    message.IsDraft = false;
+                    message.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                    mm.MessageAdd(message);
+                    return RedirectToAction("Sendbox");
+                }
+                else
+                {
+                    foreach (var item in validationResult.Errors)
+                    {
+                        ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                    }
                 }
             }
+
+            else if (button == "draft")
+            {
+                if (validationResult.IsValid)
+                {
+
+                    message.SenderMail = "admin@gmail.com";
+                    message.IsDraft = true;
+                    message.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                    mm.MessageAdd(message);
+                    return RedirectToAction("Draft");
+                }
+                else
+                {
+                    foreach (var item in validationResult.Errors)
+                    {
+                        ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                    }
+                }
+            }
+            else if (button == "cancel")
+            {
+                return RedirectToAction("NewMessage");
+            }
+
             return View();
         }
     }

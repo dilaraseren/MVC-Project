@@ -18,15 +18,29 @@ namespace Business.Concrete
             _adminDal = adminDal;
         }
 
-        public void Add(Admin admin)
+        public void AdminAdd(Admin admin)
         {
             _adminDal.Insert(admin);
         }
 
-        public Admin GetByUsername(string username)
+        public void AdminDelete(Admin admin)
         {
-            return _adminDal.Get(u => u.AdminUserName == username);
+            _adminDal.Delete(admin);
+        }
 
+        public void AdminUpdate(Admin admin)
+        {
+            _adminDal.Update(admin);
+        }
+
+        public Admin GetByAdminID(int id)
+        {
+            return _adminDal.Get(x => x.AdminId == id);
+        }
+
+        public List<Admin> GetList()
+        {
+            return _adminDal.List();
         }
     }
 }

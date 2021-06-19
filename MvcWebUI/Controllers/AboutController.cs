@@ -15,6 +15,7 @@ namespace MvcWebUI.Controllers
         AboutManager abm = new AboutManager(new EfAboutDal());
         public ActionResult Index()
         {
+           
             var aboutvalues = abm.GetList();
             return View(aboutvalues);
         }
@@ -38,6 +39,7 @@ namespace MvcWebUI.Controllers
 
         public ActionResult StatusActiveAndPassive(int id)
         {
+
             var aboutValue = abm.GetByID(id);
 
             if (aboutValue.AboutStatus == true)

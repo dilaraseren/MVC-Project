@@ -9,8 +9,8 @@ namespace Business.Abstract
 {
     public interface IAuthService
     {
-        void Register(UserForRegisterDto userForRegisterDto, string password);
-        bool Login(UserForLoginDto userForLoginDto);
-      
+        void Register(string adminUserName, string adminMail, string password);
+        bool Login(LoginDto loginDto);
+
     }
 }

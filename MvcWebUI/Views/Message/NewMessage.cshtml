@@ -3,7 +3,6 @@
     ViewBag.Title = "NewMessage";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -14,9 +13,9 @@
     <!-- Font Awesome -->
     <!-- Theme style -->
     <!-- summernote -->
-    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.css">
+    <link rel="stylesheet" href="~/Theme/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.css">
 
-    <script src="~/AdminLTE-3.0.4/plugins/summernote/summernote.min.js"></script>
+    <script src="~/Theme/AdminLTE-3.0.4/plugins/summernote/summernote.min.js"></script>
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
@@ -28,13 +27,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h4>Yeni Mesaj Oluştur</h4>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Compose</li>
-                    </ol>
+                    <h1>Yeni Mesaj Sayfası</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -43,27 +36,28 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                @Html.Action("MessageListMenu", "Contact")
+                <div class="col-md-3">
+                    @Html.Action("MessageListMenu", "Contact")
+                </div>
                 <!-- /.col -->
                 <div class="col-md-9">
-                    <div class="card card-primary card-outline">
-                        <div class="card-header">
-                            <h3 class="card-title">Mesaj Yaz</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        @using (Html.BeginForm("NewMessage", "Message", FormMethod.Post))
-                        {
+                    @using (Html.BeginForm("NewMessage", "Message", FormMethod.Post))
+                    {
+                        <div class="card card-primary card-outline">
+                            <div class="card-header">
+                                <h3 class="card-title">Yeni Mesaj Oluştur</h3>
+                            </div>
+                            <!-- /.card-header -->
                             <div class="card-body">
-
                                 <div class="form-group">
-                                    @Html.Label("Kime")
-                                    @Html.TextBoxFor(x => x.ReceiverMail, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(x => x.ReceiverMail)
+                                    @Html.Label("Alıcı:")
+                                    @Html.TextBoxFor(m => m.ReceiverMail, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.ReceiverMail, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="form-group">
-                                    @Html.Label("Konu")
-                                    @Html.TextBoxFor(x => x.Subject, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(x => x.Subject)
+                                    @Html.Label("Konu:")
+                                    @Html.TextBoxFor(m => m.Subject, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Subject, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="form-group">
                                     @Html.Label("Mesaj:")
@@ -72,7 +66,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="btn btn-default btn-file">
-                                        <i class="fas fa-paperclip"></i> Attachment
+                                        <i class="fas fa-paperclip"></i> Dosya Ekle
                                         <input type="file" name="attachment">
                                     </div>
                                     <p class="help-block">Max. 32MB</p>
@@ -81,14 +75,14 @@
                             <!-- /.card-body -->
                             <div class="card-footer">
                                 <div class="float-right">
-                                    <button type="button" class="btn btn-default"><i class="fas fa-pencil-alt"></i> Taslak</button>
-                                    <button type="submit" class="btn btn-primary"><i class="far fa-envelope"></i> Gönder</button>
+                                    <button type="submit" formmethod="post" name="button" value="draft" class="btn btn-outline-success"><i class="fas fa-pencil-alt"></i> Taslaklara Kaydet</button>
+                                    <button type="submit" name="button" value="add" class="btn btn-success"><i class="far fa-envelope"></i> Gönder</button>
                                 </div>
-                                <button type="reset" class="btn btn-default"><i class="fas fa-times"></i> Vazgeç</button>
+                                <button type="submit" name="button" value="cancel" class="btn btn-default"><i class="fas fa-times"></i> İptal Et</button>
                             </div>
-                        }
-                        <!-- /.card-footer -->
-                    </div>
+                            <!-- /.card-footer -->
+                        </div>
+                    }
                     <!-- /.card -->
                 </div>
                 <!-- /.col -->
@@ -102,21 +96,20 @@
     <!-- /.control-sidebar -->
     <!-- ./wrapper -->
     <!-- jQuery -->
-    <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+    <script src="~/Theme/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Theme/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="~/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>
+    <script src="~/Theme/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
+    <script src="~/Theme/AdminLTE-3.0.4/dist/js/demo.js"></script>
     <!-- Summernote -->
-    <script src="~/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.min.js"></script>
+    <script src="~/Theme/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.min.js"></script>
     <!-- Page Script -->
     <script>
-    $(function () {
+        $(function () {
             //Add text editor
             $('#compose-textarea').summernote()
         })</script>
 </body>
 </html>
-

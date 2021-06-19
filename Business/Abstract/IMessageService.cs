@@ -11,6 +11,11 @@ namespace Business.Abstract
     {
         List<Message> GetListInbox();
         List<Message> GetListSendbox();
+        List<Message> GetIsDraft();
+        List<Message> GetTrash();
+        List<Message> GetReadList();
+        List<Message> GetUnReadList();
+     
         void MessageAdd(Message message);
         Message GetById(int id);
         void MessageDelete(Message message);
