@@ -9,8 +9,9 @@ namespace MvcWebUI.Controllers
     public class ErrorPageController : Controller
     {
         // GET: ErrorPage
-        public ActionResult Index()
+        public ActionResult PageError()
         {
+            Response.TrySkipIisCustomErrors = true;
             return View();
         }
 
